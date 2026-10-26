@@ -1,0 +1,32 @@
+# Dependencias externas de Martha: código de otros repositorios que se descarga al construir la
+# imagen de Docker (no se copia a este repo). Formato .repos de vcstool, el estándar de ROS:
+#   repositories:
+#     <carpeta>:            dónde queda dentro de /opt/martha_drivers/src
+#       type: git
+#       url: <repositorio>
+#       version: <commit, tag o rama>   -> conviene un commit fijo: todos compilan lo mismo
+#
+# El Dockerfile hace "vcs import src < martha.repos" y compila todo en /opt/martha_drivers.
+# Para agregar un driver: sumar su entrada aquí y reconstruir la imagen (./sim.sh stop y
+# ./sim.sh): martha_up usa --build y Docker solo rehace los pasos que cambiaron.
+# Sin Docker se usa igual:  vcs import ros2_ws/src < docker/martha.repos
+repositories:
+  # Driver de los RPLIDAR de Slamtec. Es el mismo commit que usa Milo (17-06-2024, "bugfix: set
+  # the minimum distance to 5cm") y también maneja el A2M8 de Martha (sllidar_a2m8_launch.py).
+  sllidar_ros2:
+    type: git
+    url: https://github.com/Slamtec/sllidar_ros2.git
+    version: 34300099fadfc772965962dec837bf436706188f
+  # micro-ROS Agent: el "traductor" entre el ESP32 y ROS 2. El ESP32 corre micro-ROS (un ROS 2
+  # chiquito para microcontroladores) y habla por USB-serie con este agent, que corre en el laptop
+  # y publica/suscribe en ROS 2 en su nombre (/base/imu, estado de las ruedas, /cmd_vel...).
+  # Rama humble al 04-09-2026. Al compilar descarga solo el Micro-XRCE-DDS-Agent de eProsima.
+  micro-ROS-Agent:
+    type: git
+    url: https://github.com/micro-ROS/micro-ROS-Agent.git
+    version: c93ee764e0d2ef4907aeb29233c68cb5f4b56976
+  # Mensajes propios de micro-ROS que el agent necesita para compilar. Rama humble al 08-09-2026.
+  micro_ros_msgs:
+    type: git
+    url: https://github.com/micro-ROS/micro_ros_msgs.git
+    version: c9062eb3860d16c1bff1423923de3b0956fd4734
