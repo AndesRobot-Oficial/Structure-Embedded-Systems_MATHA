@@ -3,7 +3,7 @@
 Esta guía organiza verificaciones pendientes; no registra pruebas realizadas durante esta entrega.
 
 1. Identificar revisión de PCB y firmware cargado. Resolver las [diferencias documentales](estado_y_pendientes.md).
-2. Confirmar alimentación, continuidad, polaridad y adaptación de niveles de señales según la [revisión eléctrica](../electrica/revision_plano.md).
+2. Confirmar alimentación, continuidad, polaridad y adaptación de niveles de señales según la [revisión eléctrica](hardware/electrica/revision_plano.md).
 3. Compilar el firmware compatible con la placa. Verificar puerto serial por identificador del dispositivo, porque ESP32 y LiDAR pueden intercambiar números ttyUSB.
 4. Con ruedas levantadas y alimentación controlada, verificar correspondencia rueda–motor–encoder y signos; comprobar avance, lateral y giro de forma individual.
 5. Comparar velocidades ordenadas y medidas; registrar ajuste de PI, radio efectivo y cuentas por vuelta.
