@@ -1,0 +1,53 @@
+% Esquema funcional: las flechas no representan un circuito eléctrico completo.
+\begin{tikzpicture}[
+  x=1cm,y=1cm,
+  bloque/.style={draw=black!65,rounded corners=2pt,fill=white,
+    align=center,font=\small,minimum height=0.9cm,inner sep=5pt},
+  energia/.style={-{Stealth[length=2mm]},line width=0.8pt,draw=black!75},
+  senal/.style={-{Stealth[length=2mm]},dashed,line width=0.8pt,draw=blue!50!black},
+  etiqueta/.style={font=\footnotesize,fill=white,inner sep=2pt,align=center}
+]
+  \filldraw[fill=black!3,draw=black!30,rounded corners=4pt]
+    (0,0.9) rectangle (5.7,9.1);
+  \filldraw[fill=blue!3,draw=blue!25!black,rounded corners=4pt]
+    (6.1,0.9) rectangle (15.5,9.1);
+  \node[font=\small\bfseries] at (2.85,8.7) {Dominio de potencia};
+  \node[font=\small\bfseries] at (10.8,8.7) {Dominio lógico y de percepción};
+
+  \node[bloque,text width=3.8cm] (bateria) at (2.85,7.6)
+    {Batería de potencia\\15 V};
+  \node[bloque,text width=3.8cm] (drivers) at (2.85,5.3)
+    {4 drivers Pololu 5285\\MPQ6612A};
+  \node[bloque,text width=1.9cm] (motores) at (1.4,2.4)
+    {4 motores\\de tracción};
+  \node[bloque,text width=1.9cm] (encoders) at (4.25,2.4)
+    {Encoders\\de los motores};
+  \draw[energia] (bateria) -- node[etiqueta,right] {Alimentación} (drivers);
+  \draw[energia] (drivers.south) -- (2.85,4.35) -| (motores.north);
+  \draw[energia] (2.85,4.35) -| node[etiqueta,pos=0.72,right] {LDO\\5 V} (encoders.north);
+
+  \node[bloque,text width=4.1cm] (pc) at (10.8,7.6)
+    {PC a bordo\\Batería interna};
+  \node[bloque,text width=2.5cm] (usb) at (10.8,6.1) {Alimentación USB};
+  \node[bloque,text width=2.3cm] (lidar) at (8.05,4.2) {LiDAR};
+  \node[bloque,text width=3cm] (esp) at (12.95,4.2)
+    {Microcontrolador\\ESP32};
+  \node[bloque,text width=3cm] (imu) at (12.95,1.9) {IMU};
+  \draw[energia] (pc) -- (usb);
+  \draw[energia] (usb.south) -- (10.8,5.3) -| (lidar.north);
+  \draw[energia] (10.8,5.3) -| (esp.north);
+  \draw[energia] (esp) -- (imu);
+
+  \draw[senal] (esp.west) -- (10.3,4.2) -- (10.3,3.35)
+    -- node[etiqueta,below] {PWM y control} (5.9,3.35)
+    |- (drivers.east);
+  \draw[senal] (encoders.east) -- (10.65,2.4) -- (10.65,3.85)
+    -- ([yshift=-3.5mm]esp.west);
+  \node[etiqueta] at (8.05,2.4) {Señales A/B};
+
+  \draw[energia] (1.1,0.25) -- (2.1,0.25);
+  \node[font=\footnotesize,anchor=west] at (2.2,0.25) {Energía};
+  \draw[senal] (5.4,0.25) -- (6.4,0.25);
+  \node[font=\footnotesize,anchor=west] at (6.5,0.25) {Control y medición};
+  \node[font=\footnotesize,anchor=east] at (15.5,0.25) {Esquema funcional};
+\end{tikzpicture}

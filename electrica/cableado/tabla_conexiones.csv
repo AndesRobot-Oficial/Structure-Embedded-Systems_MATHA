@@ -1,0 +1,55 @@
+origen,destino,senal,calibre_awg,longitud_cm,fuente,nota
+Encoder 1 A,ESP32 GPIO12,Encoder A,,,diagramas y firmware local,Adaptación de nivel por verificar
+Encoder 1 B,ESP32 GPIO13,Encoder B,,,diagramas y firmware local,Adaptación de nivel por verificar
+ESP32 GPIO27,Driver 1 IN1,PWM IN1,,,diagramas y firmware local,
+ESP32 GPIO14,Driver 1 IN2,PWM IN2,,,diagramas y firmware local,
+ESP32 GPIO17,Driver 1 nSLEEP,Habilitación,,,diagramas y firmware local,Señal compartida
+Batería +,Driver 1 VIN,Potencia,,,diagramas y firmware local,Bus documentado como 15 V
+GND común,Driver 1 GND,Retorno,,,diagramas y firmware local,
+Driver 1 OUT1,Motor 1 terminal rojo,Salida motor,,,diagramas y firmware local,Sentido físico por verificar
+Driver 1 OUT2,Motor 1 terminal negro,Salida motor,,,diagramas y firmware local,Sentido físico por verificar
+Driver 1 VCC 5 V,Encoder 1 VCC azul,Alimentación encoder,,,diagramas y firmware local,Según diagrama
+Driver 1 GND,Encoder 1 GND verde,Retorno encoder,,,diagramas y firmware local,Según diagrama
+Encoder 2 A,ESP32 GPIO36,Encoder A,,,diagramas y firmware local,Adaptación de nivel por verificar
+Encoder 2 B,ESP32 GPIO39,Encoder B,,,diagramas y firmware local,Adaptación de nivel por verificar
+ESP32 GPIO32,Driver 2 IN1,PWM IN1,,,diagramas y firmware local,
+ESP32 GPIO33,Driver 2 IN2,PWM IN2,,,diagramas y firmware local,
+ESP32 GPIO17,Driver 2 nSLEEP,Habilitación,,,diagramas y firmware local,Señal compartida
+Batería +,Driver 2 VIN,Potencia,,,diagramas y firmware local,Bus documentado como 15 V
+GND común,Driver 2 GND,Retorno,,,diagramas y firmware local,
+Driver 2 OUT1,Motor 2 terminal rojo,Salida motor,,,diagramas y firmware local,Sentido físico por verificar
+Driver 2 OUT2,Motor 2 terminal negro,Salida motor,,,diagramas y firmware local,Sentido físico por verificar
+Driver 2 VCC 5 V,Encoder 2 VCC azul,Alimentación encoder,,,diagramas y firmware local,Según diagrama
+Driver 2 GND,Encoder 2 GND verde,Retorno encoder,,,diagramas y firmware local,Según diagrama
+Encoder 3 A,ESP32 GPIO4,Encoder A,,,diagramas y firmware local,Adaptación de nivel por verificar
+Encoder 3 B,ESP32 GPIO16,Encoder B,,,diagramas y firmware local,Adaptación de nivel por verificar
+ESP32 GPIO15,Driver 3 IN1,PWM IN1,,,diagramas y firmware local,
+ESP32 GPIO2,Driver 3 IN2,PWM IN2,,,diagramas y firmware local,
+ESP32 GPIO17,Driver 3 nSLEEP,Habilitación,,,diagramas y firmware local,Señal compartida
+Batería +,Driver 3 VIN,Potencia,,,diagramas y firmware local,Bus documentado como 15 V
+GND común,Driver 3 GND,Retorno,,,diagramas y firmware local,
+Driver 3 OUT1,Motor 3 terminal rojo,Salida motor,,,diagramas y firmware local,Sentido físico por verificar
+Driver 3 OUT2,Motor 3 terminal negro,Salida motor,,,diagramas y firmware local,Sentido físico por verificar
+Driver 3 VCC 5 V,Encoder 3 VCC azul,Alimentación encoder,,,diagramas y firmware local,Según diagrama
+Driver 3 GND,Encoder 3 GND verde,Retorno encoder,,,diagramas y firmware local,Según diagrama
+Encoder 4 A,ESP32 GPIO21,Encoder A,,,diagramas y firmware local,Adaptación de nivel por verificar
+Encoder 4 B,ESP32 GPIO22,Encoder B,,,diagramas y firmware local,Adaptación de nivel por verificar
+ESP32 GPIO18,Driver 4 IN1,PWM IN1,,,diagramas y firmware local,
+ESP32 GPIO19,Driver 4 IN2,PWM IN2,,,diagramas y firmware local,
+ESP32 GPIO17,Driver 4 nSLEEP,Habilitación,,,diagramas y firmware local,Señal compartida
+Batería +,Driver 4 VIN,Potencia,,,diagramas y firmware local,Bus documentado como 15 V
+GND común,Driver 4 GND,Retorno,,,diagramas y firmware local,
+Driver 4 OUT1,Motor 4 terminal rojo,Salida motor,,,diagramas y firmware local,Sentido físico por verificar
+Driver 4 OUT2,Motor 4 terminal negro,Salida motor,,,diagramas y firmware local,Sentido físico por verificar
+Driver 4 VCC 5 V,Encoder 4 VCC azul,Alimentación encoder,,,diagramas y firmware local,Según diagrama
+Driver 4 GND,Encoder 4 GND verde,Retorno encoder,,,diagramas y firmware local,Según diagrama
+ESP32 GPIO25,MPU6050 SDA,I2C SDA,,,diagramas y documentación,
+ESP32 GPIO26,MPU6050 SCL,I2C SCL,,,diagramas y documentación,
+ESP32 alimentación,MPU6050 VCC,Alimentación,,,diagramas y documentación,Tensión no indicada en el PNG; confirmar módulo
+ESP32 GND,MPU6050 GND,Retorno,,,diagramas y documentación,
+Comparador LM339,ESP32 GPIO23,Sobrecorriente,,,diagramas y documentación,Previsto; tesis indica no soldado
+Divisor batería,ESP32 GPIO34,ADC batería,,,diagramas y documentación,Previsto; tesis indica no soldado
+PC USB,ESP32 USB,Alimentación y serial,,,diagramas y documentación,
+PC USB,RPLIDAR USB,Alimentación y datos,,,diagramas y documentación,
+PC USB,RealSense 1 USB,Alimentación y datos,,,diagramas y documentación,Variante del diagrama; montaje por confirmar
+PC USB,RealSense 2 USB,Alimentación y datos,,,diagramas y documentación,Variante del diagrama; montaje por confirmar
