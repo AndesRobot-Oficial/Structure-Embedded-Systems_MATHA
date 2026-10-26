@@ -45,10 +45,10 @@ Driver 4 VCC 5 V,Encoder 4 VCC azul,Alimentación encoder,,,diagramas y firmware
 Driver 4 GND,Encoder 4 GND verde,Retorno encoder,,,diagramas y firmware local,Según diagrama
 ESP32 GPIO25,MPU6050 SDA,I2C SDA,,,diagramas y documentación,
 ESP32 GPIO26,MPU6050 SCL,I2C SCL,,,diagramas y documentación,
-ESP32 alimentación,MPU6050 VCC,Alimentación,,,diagramas y documentación,Tensión no indicada en el PNG; confirmar módulo
+ESP32 alimentación,MPU6050 VCC,Alimentación,,,diagramas y documentación,J6 pin 1 conectado a +3.3V en PCB; confirmar módulo
 ESP32 GND,MPU6050 GND,Retorno,,,diagramas y documentación,
-Comparador LM339,ESP32 GPIO23,Sobrecorriente,,,diagramas y documentación,Previsto; tesis indica no soldado
-Divisor batería,ESP32 GPIO34,ADC batería,,,diagramas y documentación,Previsto; tesis indica no soldado
+Comparador LM339,ESP32 GPIO23,Sobrecorriente,,,diagramas y documentación,Incluido en el diseño PCB; montaje por verificar
+Divisor batería,ESP32 GPIO34,ADC batería,,,diagramas y documentación,Incluido en el diseño PCB; montaje por verificar
 PC USB,ESP32 USB,Alimentación y serial,,,diagramas y documentación,
 PC USB,RPLIDAR USB,Alimentación y datos,,,diagramas y documentación,
 PC USB,RealSense 1 USB,Alimentación y datos,,,diagramas y documentación,Variante del diagrama; montaje por confirmar

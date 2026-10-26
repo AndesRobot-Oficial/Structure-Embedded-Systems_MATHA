@@ -1,15 +1,16 @@
-# Revisión documental del sistema eléctrico
+# Revisión de integración eléctrica
 
-Estado al organizar los archivos, 25 de octubre de 2026. No se hicieron mediciones físicas.
+Pendientes concretos del diseño y del montaje de MARTHA para RoboCup.
 
-- [ ] Confirmar la revisión de PCB fabricada y recuperar esquemático editable, diseño y Gerbers.
-- [ ] Documentar la adaptación de nivel de encoders: los PNG muestran alimentación a 5 V y GPIO de 3,3 V, pero no el circuito intermedio. No interpretar las líneas del dibujo como autorización para aplicar 5 V a GPIO.
-- [ ] Confirmar batería: química, capacidad, rango descargada/cargada y protecciones. Los 15 V son el valor documentado, no un rango certificado.
-- [ ] Revisar divisor de batería 39 kΩ / 10 kΩ y rango ADC contra la tensión máxima real. La tesis indica que no estaba soldado.
-- [ ] Confirmar comparador de sobrecorriente y niveles de su salida. La tesis lo describe sin soldar y el firmware no lo consulta (`OVERCURRENT_SENSE = false`).
-- [ ] Registrar protección de potencia, parada, conectores, calibres y longitudes reales. Los PNG no bastan para verificar esos elementos.
-- [ ] Confirmar tensión de alimentación y módulo concreto de MPU6050.
-- [ ] Resolver la diferencia de las dos RealSense: aparecen en el diagrama adicional, pero la tesis excluye RealSense del equipamiento asignado al proyecto.
-- [ ] Confirmar correspondencia entre ruedas físicas, signos y pines antes de operar.
+- [ ] Comprobar que PCB, esquemático y Gerbers representan la misma revisión. El ZIP aportado contiene archivos fechados el 31 de julio de 2026.
+- [ ] Resolver la diferencia entre la red `+12V` de KiCad y la batería de 15 V indicada en los diagramas.
+- [ ] Verificar tensión máxima, capacidad, química y protecciones de la batería.
+- [ ] Verificar adaptación entre señales de encoder y GPIO del ESP32; los diagramas no detallan todos los circuitos intermedios.
+- [ ] Revisar R4: el PCB la conecta desde `+5V4` a GPIO23. Comprobar compatibilidad de niveles.
+- [ ] Verificar rango del divisor de batería R5/R6 (39 kΩ / 10 kΩ) frente a la tensión máxima de batería y al ADC.
+- [ ] Soldar el divisor de batería y el comparador de sobrecorriente (hoy no están en la placa), calibrar RV1/LM339 y activar `BATTERY_SENSE` y `OVERCURRENT_SENSE` en el [firmware](../../../firmware/README.md).
+- [ ] Completar R2, R3 y R7–R10, que figuran con valor genérico `R` en el PCB.
+- [ ] Registrar fusibles, parada, calibres y longitudes reales de cableado.
+- [ ] Confirmar alimentación y montaje de IMU y cámaras.
 
-Los siete diagramas se conservaron sin modificaciones. La versión completa muestra distribución y las cuatro ramas de motor; la variante RealSense/IMU está en un PNG separado.
+[Descripción de la PCB](../pcb/README.md) · [Diagramas originales](esquematicos/README.md)

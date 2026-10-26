@@ -3,7 +3,7 @@
 Secuencia de integración de la base móvil para el proyecto RoboCup.
 
 1. Identificar PCB y firmware utilizados; registrar revisión y componentes montados.
-2. Revisar alimentación, polaridad, niveles de señal y los puntos de la [revisión eléctrica](../electrica/revision_plano.md).
+2. Revisar alimentación, polaridad, niveles de señal y los puntos de la [revisión eléctrica](hardware/electrica/revision_plano.md).
 3. Compilar el firmware con el soporte ESP32 correspondiente y registrar la versión del entorno.
 4. Con las ruedas levantadas, verificar correspondencia de cada rueda, motor, encoder y signo de giro.
 5. Comprobar seguimiento de velocidad, ajustar PI y documentar radio efectivo y cuentas por vuelta.

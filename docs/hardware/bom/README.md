@@ -1,17 +1,19 @@
 [← Inicio](../../../README.md)
 
-# Materiales de MARTHA
+# Materiales de la plataforma
 
-[Inventario CSV](componentes.csv) · [Compras documentadas CSV](compras_documentadas.csv)
+Inventario técnico para organizar el hardware de MARTHA en el proyecto RoboCup.
 
-| Grupo | Componentes |
+| Subsistema | Componentes |
 |---|---|
-| Tracción | Cuatro motores Pololu 4753, cuatro drivers Pololu 5285 y cuatro ruedas mecanum de 150 mm |
-| Control y sensores | ESP32, MPU6050, RPLIDAR A2M8 y PC a bordo |
-| Alimentación | Batería de la plataforma, documentada como 15 V; USB del PC para ESP32 y LiDAR |
-| Construcción | Plataforma de aluminio, PCB, conectores y cableado |
-| Variante del diagrama | Dos RealSense; asignación y montaje por confirmar |
+| Tracción | Cuatro motores Pololu 4753, cuatro drivers Pololu 5285 y cuatro ruedas mecanum |
+| Control | ESP32 DevKit de 30 pines y PCB de interconexión |
+| Sensores | RPLIDAR A2M8 y MPU6050; dos RealSense contempladas en el diagrama de sensores |
+| Cómputo | PC a bordo |
+| Energía y montaje | Batería, plataforma de aluminio, conectores y cableado |
 
-Los costos históricos de compras suman **669.000 COP**. No representan el costo completo de reproducir el robot ni cotizaciones actuales. La batería y otros elementos ya pertenecían a la plataforma. Se compraron dos motores para sustituir dos averiados: siguen siendo cuatro motores operativos, no seis.
+- [Inventario de plataforma CSV](componentes.csv).
+- [Componentes extraídos de la PCB](../pcb/componentes_pcb.csv).
+- [Descripción del circuito](../pcb/README.md).
 
-Fuentes: presupuesto de la tesis activa (cap8.tex), anexo de hardware, firmware y diagramas aportados. Falta completar perfilería, tornillería, conectores, características de batería y referencias del PC y cámaras.
+Las cantidades corresponden al conjunto documentado. Confirmar modelos exactos, disponibilidad y montaje de sensores antes de cerrar compras. La BOM de la PCB conserva los valores genéricos existentes en el diseño para que el equipo pueda completarlos.

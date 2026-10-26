@@ -234,7 +234,7 @@ Structure-Embedded-Systems_MATHA/
 │   │   ├── electrica/         diagramas, pines y conexiones, presupuesto de potencia, revisión
 │   │   ├── bom/               materiales y compras
 │   │   ├── cad/               geometría y estado del diseño mecánico
-│   │   └── pcb/               estado de los archivos de fabricación
+│   │   └── pcb/               proyecto KiCad de la placa (esquemático, PCB, Gerbers) y su BOM
 │   ├── integracion_ros2/      puente serial, EKF y LiDAR de la tesis (copias de referencia)
 │   ├── evidencias/            fotos y videos del robot funcionando
 │   ├── fuentes_tesis/         fragmentos LaTeX de la tesis
@@ -267,7 +267,8 @@ Si `/cmd_vel` deja de llegar 0,5 s, la base se detiene (el firmware ya lo hace).
 | Disponible | Por completar |
 |---|---|
 | Firmware que funciona en el robot (c8faa84) y sketches de prueba | Soldar el divisor de batería y el comparador de sobrecorriente |
-| Siete diagramas eléctricos, inventario, pines y conexiones | CAD nativo y archivos de fabricación de PCB |
+| Siete diagramas eléctricos, inventario, pines y conexiones | CAD mecánico nativo |
+| [Proyecto KiCad de la PCB](docs/hardware/pcb/README.md), Gerbers y BOM de la placa | Comprobar que los Gerbers (31/07/2026) correspondan al PCB editable |
 | URDF de Martha tal como está construida | Consumos medidos y datos completos de batería |
 | Fotografías e inventario de pruebas físicas | Paquete `andesrobot_bringup`: la base en ROS con los nombres del contrato |
 

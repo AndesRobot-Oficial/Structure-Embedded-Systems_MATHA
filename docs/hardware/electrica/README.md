@@ -20,4 +20,4 @@
 | Salidas de drivers | Motores y encoders asociados | Motores nominales de 12 V; encoders a 5 V en el diagrama |
 | USB del PC | ESP32 y LiDAR | Alimentación y datos |
 
-Los PNG son diagramas de conexión aportados por el equipo. Los originales editables de la PCB, calibres, protecciones y adaptaciones de nivel se describen en [revisión eléctrica](revision_plano.md).
+Los PNG son diagramas de conexión aportados por el equipo. El [proyecto PCB editable](../pcb/README.md) está incluido. Los puntos de integración, calibres, protecciones y adaptación de nivel están en [revisión eléctrica](revision_plano.md).

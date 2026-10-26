@@ -26,7 +26,7 @@ La batería alimenta los cuatro drivers. El PC suministra alimentación USB al E
 
 [![Variante de conexión de dos cámaras RealSense y una MPU6050](07_realsense_imu.png)](07_realsense_imu.png)
 
-Esta lámina incluye dos RealSense y la MPU6050. Las cámaras se conservan como variante documentada; no se afirma su participación en las pruebas de la tesis.
+Esta lámina contempla dos RealSense y la MPU6050. Confirmar modelos y montaje de las cámaras para la configuración de competencia.
 
 ---
 
