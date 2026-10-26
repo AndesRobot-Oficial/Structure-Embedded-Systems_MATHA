@@ -1,0 +1,8 @@
+componente,cantidad,dominio,tension_documentada_v,potencia_tipica_w,potencia_maxima_w,estado
+Motores Pololu 4753,4,Salida PWM de drivers,12,,,Nominal de motor; consumo pendiente
+Drivers Pololu 5285,4,Batería,15,,,Pérdidas propias pendientes; no sumar dos veces potencia de motores
+ESP32,1,USB PC,5,,,Consumo pendiente
+RPLIDAR A2M8,1,USB PC,5,,,Consumo pendiente
+MPU6050,1,Alimentación desde ESP32,,,,Tensión de módulo y consumo pendientes
+PC a bordo,1,Por confirmar,,,,Modelo y alimentación pendientes
+RealSense,2,USB PC,5,,,Solo variante del diagrama; confirmar montaje

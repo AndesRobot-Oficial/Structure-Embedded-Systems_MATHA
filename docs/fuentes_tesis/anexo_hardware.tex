@@ -1,0 +1,86 @@
+\clearpage
+\section{Anexo F. Hardware de la plataforma}
+\label{anexo:hardware}
+
+Este anexo reúne los datos electrónicos de MARTHA que sustentan el subsistema de control y potencia del capítulo~\ref{desarrollo-conceptual}: la alimentación, la asignación de pines del ESP32, los parámetros del firmware, la comparación entre el Arduino Uno y el ESP32 y la robustez de la matriz de sensores. Los archivos de la placa de circuito impreso estarán disponibles en el repositorio del proyecto.
+
+\subsection{Alimentación}
+
+La plataforma se alimenta con una batería de 15 V. Esa batería suministra a los cuatro drivers Pololu 5285, de modo que el dominio de potencia opera a 15 V, y los drivers energizan los motores y los encoders (figura~\ref{fig:dominios_potencia}). El ESP32 y el LiDAR toman su energía del PC a bordo por USB. Los motorreductores Pololu 4753 tienen una tensión nominal de 12 V~\cite{pololu4753}; la tensión efectiva que reciben depende del ciclo de trabajo del PWM.
+
+Las ruedas giran a unas 84 RPM como máximo con las órdenes del modelo final W, y a unas 116 RPM con las de H, que añaden la velocidad lateral. El firmware toma como referencia una velocidad máxima de 200 RPM del motorreductor~\cite{repoMartha}, por lo que la política solicita menos de la mitad de ese valor.
+
+La medición de la batería usa un divisor de 39 k$\Omega$ y 10 k$\Omega$ hacia la entrada analógica del ESP32, con una relación de 4.9. Con 15 V el divisor entrega 3.06 V a esa entrada; si la batería supera ese valor, la lectura se satura, y por ello los valores del divisor deben revisarse antes de habilitar la medición. Ese divisor y el comparador de sobrecorriente están previstos en la placa pero no estaban soldados al 21 de octubre de 2026; mientras tanto, el firmware omite sus comprobaciones~\cite{repoMartha}.
+
+\subsection{Asignación de pines}
+
+El cuadro~\ref{tab:pines-esp32} indica los pines del ESP32 de cada rueda, numeradas según el orden delantera izquierda, delantera derecha, trasera izquierda y trasera derecha. Los vectores de signo del firmware compensan el montaje en espejo de los motores derechos y de los encoders izquierdos.
+
+\begin{table}[htbp]
+\centering\small
+\setlength{\tabcolsep}{5pt}
+\caption{Asignación de pines del ESP32 para las cuatro ruedas.}\label{tab:pines-esp32}
+\begin{tabular}{lrrrr}
+\toprule
+Señal (GPIO) & Rueda 1 & Rueda 2 & Rueda 3 & Rueda 4\\\midrule
+Encoder A & 12 & 36 & 4 & 21\\
+Encoder B & 13 & 39 & 16 & 22\\
+PWM IN1 & 27 & 32 & 15 & 18\\
+PWM IN2 & 14 & 33 & 2 & 19\\
+Signo del motor & $+1$ & $-1$ & $+1$ & $-1$\\
+Signo del encoder & $-1$ & $+1$ & $-1$ & $+1$\\
+\bottomrule
+\end{tabular}
+\par\smallskip\small Fuente: firmware de la revisión \texttt{c8faa84}~\cite{repoMartha}.
+\end{table}
+
+Las demás señales comparten pines: el pin 17 controla el \emph{nSLEEP} de los cuatro drivers; el 23 recibe la salida del comparador de sobrecorriente, activa en nivel bajo; el 34 lee el divisor de batería; y los pines 25 y 26 forman el bus I2C de la IMU MPU6050.
+
+\subsection{Parámetros del firmware}
+
+\begin{table}[htbp]
+\centering\small
+\caption{Parámetros del firmware del ESP32.}\label{tab:parametros-firmware}
+\begin{tabular}{p{0.45\linewidth}p{0.42\linewidth}}
+\toprule
+Parámetro & Valor\\\midrule
+Radio de rueda y suma $l_x+l_y$ & 0.075 m y 0.385 m\\
+Resolución del encoder & 3200 cuentas por vuelta (64 CPR $\times$ 50:1)\\
+PWM de los drivers & 10 kHz, 8 bits, decaimiento lento\\
+Lazo de control y reporte de odometría & 100 Hz y 50 Hz\\
+Control de cada rueda & PI con $K_p=1.0$ y $K_i=1.6$ cuentas de PWM por RPM, más prealimentación $\mathrm{RPM}\approx1.15\,(\mathrm{PWM}-4)$\\
+Zona muerta de la orden & 0.01 m/s y 0.02 rad/s\\
+Techo de velocidad y tiempo de espera de la orden & 1.0 m/s, 2.0 rad/s y 500 ms\\
+Giróscopo & $\pm250^{\circ}$/s, filtro de 44 Hz y calibración de sesgo de 5 s al arrancar\\
+Umbrales de batería (sin habilitar) & 11.0 V (baja) y 11.5 V (rearme)\\
+\bottomrule
+\end{tabular}
+\par\smallskip\small Fuente: firmware y documentación de diseño de la revisión \texttt{c8faa84}~\cite{repoMartha}.
+\end{table}
+
+\subsection{Comparación entre el Arduino Uno y el ESP32}
+
+La selección del ESP32 se sustenta en las diferencias del cuadro~\ref{tab:arduino_esp32}.
+
+\begin{table}[htbp]
+\centering
+\footnotesize
+\setlength{\tabcolsep}{4pt}
+\begin{tabular}{@{}p{2.6cm}p{3.3cm}p{3.6cm}p{4.4cm}@{}}
+\toprule
+\textbf{Característica técnica} & \textbf{Arduino Uno (ATmega328P)} & \textbf{ESP32} & \textbf{Impacto en la plataforma MARTHA} \\
+\midrule
+Arquitectura y reloj & 8 bits / 16 MHz & 32 bits / 240 MHz (doble núcleo) & La potencia computacional permite procesar ecuaciones de cinemática (directa e inversa) con punto flotante y ejecutar cuatro lazos de control PI simultáneos; la latencia debe evaluarse en la implementación. \\
+Lectura de encoders & Interrupciones por software; carga y pérdida de pulsos por evaluar & Módulo PCNT por hardware (decodificación de cuadratura nativa) & Permite leer los canales A y B de los cuatro motores mediante un periférico dedicado, reduciendo la carga de conteo por software para la estimación odométrica. \\
+Puertos UART (hardware) & 1 puerto (compartido con USB) & 3 puertos dedicados & Permite configurar un enlace de comunicación bidireccional a 115200 baudios con el PC a bordo, para actualizar las velocidades objetivo y enviar datos odométricos. \\
+Resolución PWM & 8 bits (256 niveles) & Hasta 16 bits (configurable) & Permite configurar la resolución de la señal PWM. El firmware emplea 8 bits a 10 kHz; su efecto sobre la respuesta de los motores debe comprobarse en las pruebas~\cite{repoMartha}. \\
+Interfaces I2C & 1 bus estándar & 2 buses dedicados & Permite organizar la comunicación con sensores como la MPU6050. El tiempo de adquisición y su interacción con el control dependen de la configuración y la programación. \\
+\bottomrule
+\end{tabular}
+\caption{Comparación técnica entre Arduino Uno y ESP32, y su impacto en la plataforma MARTHA.}
+\label{tab:arduino_esp32}
+\end{table}
+
+\subsection{Robustez de la matriz de sensores}
+
+Como los pesos son valoraciones de diseño, se comprobó cuánto condicionan la decisión. La precisión espacial recibe el mayor peso porque determina la información que recibe la política; los demás criterios pesan entre 15 \% y 20 \%. El LiDAR 2D obtiene una calificación mayor o igual que la de cada alternativa en todos los criterios, salvo la eficiencia computacional frente a los sensores ultrasónicos, de modo que su primer lugar no depende de un peso concreto. Con 200 000 combinaciones aleatorias de pesos que suman 1 y se distribuyen de manera uniforme, el LiDAR 2D queda primero en el 99.5 \% de los casos, y al variar cada peso hasta $\pm50$ \% queda primero en el 100 \%. Con pesos iguales obtiene 4.40 frente a 3.40 de la cámara RGB, y sin el criterio de disponibilidad obtiene 4.25 frente a 3.56 del LiDAR 3D. Los cálculos se reproducen con \path{herramientas/analizar_decisiones.py}.

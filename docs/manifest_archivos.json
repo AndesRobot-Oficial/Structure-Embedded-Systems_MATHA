@@ -1,0 +1,204 @@
+[
+  {
+    "archivo": "electrica/esquematicos/01_distribucion_potencia.png",
+    "origen": "carpeta aportada: 01_distribucion_potencia.png",
+    "sha256": "fe223c7208d1a20bb6716116f65e83eba803e1599a878f8146bd1b0c6150086a"
+  },
+  {
+    "archivo": "electrica/esquematicos/02_potencia_motor_1.png",
+    "origen": "carpeta aportada: 02_potencia_motor_1.png",
+    "sha256": "ec10c9ff46bcddee763375b4d63c96c116d0fe28117fc5780f9ada7f625da207"
+  },
+  {
+    "archivo": "electrica/esquematicos/03_potencia_motor_2.png",
+    "origen": "carpeta aportada: 03_potencia_motor_2.png",
+    "sha256": "2198cbeb5984770495d30bbfacf1573a391f753cda3c53a8da9d9a6625226390"
+  },
+  {
+    "archivo": "electrica/esquematicos/04_potencia_motor_3.png",
+    "origen": "carpeta aportada: 04_potencia_motor_3.png",
+    "sha256": "ae8ee08e80be6fdbf0d6dcd36fbf9f9a55e0d42bac183b3b66869b35e8fc3b3d"
+  },
+  {
+    "archivo": "electrica/esquematicos/05_potencia_motor_4.png",
+    "origen": "carpeta aportada: 05_potencia_motor_4.png",
+    "sha256": "93dc428b5fd44df9c48dc35dd0fdab25fac4abae727827b552a5f16c37c1c2d6"
+  },
+  {
+    "archivo": "electrica/esquematicos/07_realsense_imu.png",
+    "origen": "carpeta aportada: 07_realsense_imu.png",
+    "sha256": "111449603cfc6e1b5843d679502c36d2316fb699ff5899b4cf7de55464a59261"
+  },
+  {
+    "archivo": "electrica/esquematicos/martha_potencia_completa.png",
+    "origen": "carpeta aportada: martha_potencia_completa.png",
+    "sha256": "4a8314a8fa633120bae941f3e43b77a3fbb9d70ec6384c630a20e6526df76931"
+  },
+  {
+    "archivo": "firmware/firmware/firmware.ino",
+    "origen": "martha_nav/firmware/firmware.ino",
+    "sha256": "5b463a11ca87aa38f55fdf416960aa115ad4e5a3b5c2563a8ad564f1e33db3f1"
+  },
+  {
+    "archivo": "firmware/firmware/control.h",
+    "origen": "martha_nav/firmware/control.h",
+    "sha256": "cf42502fbcbf717f3fb6ebd6d58cc7fb7b2b4b00fd97fd6950b5d8d983f5af18"
+  },
+  {
+    "archivo": "firmware/firmware/sensors.h",
+    "origen": "martha_nav/firmware/sensors.h",
+    "sha256": "004c173710c67537c0960adeaa82de9eaaa4c3f89b1856081de4dc392341c9f9"
+  },
+  {
+    "archivo": "integracion_ros2/referencia/esp32_bridge.py",
+    "origen": "martha_nav/martha_nav/ros/esp32_bridge.py",
+    "sha256": "079e7d8f9d93c1ca257b337d128cebb34ac2282202c1294e4fb3d9ed989acb86"
+  },
+  {
+    "archivo": "integracion_ros2/referencia/common.py",
+    "origen": "martha_nav/martha_nav/ros/common.py",
+    "sha256": "f719778c679d655544cdce7eafce272149a06cb66f88265149e75ff71c1ad2d7"
+  },
+  {
+    "archivo": "integracion_ros2/config/ekf.yaml",
+    "origen": "martha_nav/config/ekf.yaml",
+    "sha256": "efaf5bee27a082ece627dce76aeb9d4af8789fd18ea11e2196e85f21bd605cd4"
+  },
+  {
+    "archivo": "integracion_ros2/config/rplidar.yaml",
+    "origen": "martha_nav/config/rplidar.yaml",
+    "sha256": "ed981a8cd57671f8c0934a9121ca29853ad6f84196ee88b94477c8268ff51bae"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/01_video2_01m44s_rviz_mapa_ruta_goal.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/01_video2_01m44s_rviz_mapa_ruta_goal.png",
+    "sha256": "9787c2276f637cc058d3689235effff5c9b51ebb195d17ee363a13bd14c33a7d"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/02_video2_01m49s_rviz_mapa_log_goal_ppo.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/02_video2_01m49s_rviz_mapa_log_goal_ppo.png",
+    "sha256": "8ae1fe074f3c6a238d1cbdb8b4c3d1c6a48d96e971707b5214ac164eacf7ed7e"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/03_video2_01m58s_rviz_mapa_ruta_goal.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/03_video2_01m58s_rviz_mapa_ruta_goal.png",
+    "sha256": "cf5129de7dac272fe2ffdf76be6d9cf95702e738fcd5040880e82a10e5848658"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/04_video4_00m45s_rviz_2DGoalPose_progreso75.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/04_video4_00m45s_rviz_2DGoalPose_progreso75.png",
+    "sha256": "967fd8866eeccfed1eb5c8bfae1e8fd98cf4ed5fa419e55855b809d1508e6406"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/05_video4_00m46s_rviz_2DGoalPose_ruta.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/05_video4_00m46s_rviz_2DGoalPose_ruta.png",
+    "sha256": "676495db8878da928e18673ad15f1e4a65711fd59821b00656e3e1061ea694da"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/07_video1_00m45s_rviz_mapa_robot.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/07_video1_00m45s_rviz_mapa_robot.png",
+    "sha256": "50eabeb9f0dcb7fce405cb78600e9cb37a6a9df2f908152601d89dd4860f1e46"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/08_video3_00m37s_rviz_mapa_cargado.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/08_video3_00m37s_rviz_mapa_cargado.png",
+    "sha256": "baafdb5d6bbad0848163608f0a42e68383edf0bc5b7c18677221f4cf9e49a735"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/09_video6_00m27s_rviz_mapa_cargado.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/09_video6_00m27s_rviz_mapa_cargado.png",
+    "sha256": "c3ce527f5ea4d165341b6d73c8e5db82dde2bf46a3068404363d90cadebd208c"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/10_video7_00m16s_rviz_robot_en_ruta.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/10_video7_00m16s_rviz_robot_en_ruta.png",
+    "sha256": "323d94c19383491cd3cd88535cd7cc9bfd550d0bc79c2faaece5af0f7aec3fe6"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/11_video7_00m20s_rviz_robot_en_ruta.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/11_video7_00m20s_rviz_robot_en_ruta.png",
+    "sha256": "11a4038b907d0f38b106c790c9f468cc987f417b58e842c06025df0d1506f1ae"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/12_video2_01m24s_martha_fisico.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/12_video2_01m24s_martha_fisico.png",
+    "sha256": "38c9e0a87ca2b44fd4db2a492a9517cc91d2b496bb8b4ac3fd2aa367353f27ef"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/13_video3_00m51s_martha_fisico.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/13_video3_00m51s_martha_fisico.png",
+    "sha256": "0275520a9c6b0dbfca0b401c248eac55b9a6a0ca3b3f23e8b24b73a421e25ec2"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/14_video5_00m25s_martha_fisico.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/14_video5_00m25s_martha_fisico.png",
+    "sha256": "793441177fe8b41334a1e544d6f8d69bd847c6d9cd11e6a7bc76e78ec5df216f"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/15_video7_00m47s_martha_fisico.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/15_video7_00m47s_martha_fisico.png",
+    "sha256": "692344ce4c131bed0bc3af8b9d009ed15a4845e6db0b271c0c83146374190447"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/16_salon_mapeo_consola_rviz.jpeg",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/16_salon_mapeo_consola_rviz.jpeg",
+    "sha256": "07dfa7efb19c5f97895fbc3ed9cbaa306cf968fedcf90aa6e5298f2a84537597"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/17_salon_preparacion_robot.jpeg",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/17_salon_preparacion_robot.jpeg",
+    "sha256": "75d8a363291e9f79f3494b3bd943b085d9e2a581261af2680edcf113957d4d4d"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/18_salon_mapa_rviz_torre.jpeg",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/18_salon_mapa_rviz_torre.jpeg",
+    "sha256": "1f7109cd8a39b50c5c178be20bf12a80f2cb817f7915f2ac42fea5363450da7b"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/19_R1_00m06s_rviz_goal_ruta_robot.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/19_R1_00m06s_rviz_goal_ruta_robot.png",
+    "sha256": "64c166f3ee515446002637f190be9e1314567fced11ba540b3c036353271aa0c"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/19_R1_00m15s_rviz_goal_ruta_robot.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/19_R1_00m15s_rviz_goal_ruta_robot.png",
+    "sha256": "b70ed0128e7db141274324e43818ba0ef779874ef6d850f85399022f3d81342d"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/19_R1_00m27s_rviz_goal_ruta_robot.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/19_R1_00m27s_rviz_goal_ruta_robot.png",
+    "sha256": "ee154b1ca7919a4f31473e35289f80cf52a5d5ee6a96c4dca1a5b628dca72cc9"
+  },
+  {
+    "archivo": "docs/evidencias/fotos/19_R1_00m36s_rviz_goal_ruta_robot.png",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/fotos/19_R1_00m36s_rviz_goal_ruta_robot.png",
+    "sha256": "ed45d28945a93a6cf95f16027b33edfa92b3d7936078b64e6213db831c0412d4"
+  },
+  {
+    "archivo": "docs/evidencias/registros_audiovisuales.csv",
+    "origen": "evidencias_para_subir/repo/docs/evidencias/registros_audiovisuales.csv",
+    "sha256": "b024096162788fe348bb50a3976fbb97170e8cd75c961d34172f01cdb54e787e"
+  },
+  {
+    "archivo": "docs/evidencias/README.md",
+    "origen": "evidencias_para_subir/videos_publicados/docs/evidencias/README.md",
+    "sha256": "fd55420bc6108eba77941e17abcf60e2137202ded0b9cba294e5ed55eb092690",
+    "sha256_origen": "f9dc80c7ce6646ea3958f48450b0dd3a7f8fae5018a3194638206f7ce900702c",
+    "adaptacion": "Se añadieron enlaces de navegación; contenido técnico conservado."
+  },
+  {
+    "archivo": "docs/fuentes_tesis/dominios_potencia.tex",
+    "origen": "Tesis_MARTHA_LaTeX_1_/figuras/dominios_potencia.tex",
+    "sha256": "04b976f6a6edda71db5d1393bf1644d8ac6ed4be9781532140c691cdba439d6f"
+  },
+  {
+    "archivo": "docs/fuentes_tesis/geometria_mecanum.tex",
+    "origen": "Tesis_MARTHA_LaTeX_1_/figuras/geometria_mecanum.tex",
+    "sha256": "0aff02c826bbb4de429bf7be59622161134412cae7d1b71c55715d494d0236f8"
+  },
+  {
+    "archivo": "docs/fuentes_tesis/anexo_hardware.tex",
+    "origen": "Tesis_MARTHA_LaTeX_1_/capitulos/anexo_hardware.tex",
+    "sha256": "d3ecfaa03f742da70ae89a051fddea1c2f2889900a42f95887b28c8c005d5f95"
+  }
+]

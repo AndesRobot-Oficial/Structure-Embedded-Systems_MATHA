@@ -1,0 +1,37 @@
+% Vista superior. x hacia el frente; y hacia la izquierda; z sale del plano.
+\begin{tikzpicture}[
+  x=1cm,y=1cm,
+  eje/.style={-{Stealth[length=2mm]},thick},
+  cota/.style={{Stealth[length=1.6mm]}-{Stealth[length=1.6mm]},thin},
+  rueda/.style={draw=black!70,fill=black!15,rounded corners=2pt,
+    minimum width=0.55cm,minimum height=1.05cm},
+  rotulo/.style={font=\small,align=center,text width=2.2cm}
+]
+  \filldraw[fill=blue!3,draw=black!60,rounded corners=3pt]
+    (-1.5,-2.4) rectangle (1.5,2.4);
+  \draw[gray,densely dashed] (-2,-1.8) -- (2,-1.8);
+  \draw[gray,densely dashed] (-2,1.8) -- (2,1.8);
+  \draw[gray,densely dashed] (-1.8,-2.5) -- (-1.8,2.5);
+  \draw[gray,densely dashed] (1.8,-2.5) -- (1.8,2.5);
+  \node[rueda] at (-1.8,1.8) {};
+  \node[rueda] at (1.8,1.8) {};
+  \node[rueda] at (-1.8,-1.8) {};
+  \node[rueda] at (1.8,-1.8) {};
+  \node[rotulo,anchor=east] at (-2.2,1.8) {$W_1$\\Delantera izquierda};
+  \node[rotulo,anchor=west] at (2.2,1.8) {$W_2$\\Delantera derecha};
+  \node[rotulo,anchor=east] at (-2.2,-1.8) {$W_3$\\Trasera izquierda};
+  \node[rotulo,anchor=west] at (2.2,-1.8) {$W_4$\\Trasera derecha};
+  \draw[eje] (0,0) -- (0,3.15) node[right] {$+x$};
+  \draw[eje] (0,0) -- (-3.2,0) node[above] {$+y$};
+  \fill (0,0) circle (1.5pt);
+  \node[font=\small,below right] at (0,0) {$O$};
+  \draw[eje] (45:0.78) arc[start angle=45,end angle=145,radius=0.78];
+  \node[font=\small] at (-0.8,1.0) {$+\omega$};
+  \draw[gray,thin] (0,0) -- (1.25,0);
+  \draw[cota] (1.05,0) -- node[right] {$l_x$} (1.05,1.8);
+  \draw[gray,thin] (-1.8,-2.4) -- (-1.8,-3.0);
+  \draw[gray,thin] (0,-2.4) -- (0,-3.0);
+  \draw[cota] (-1.8,-2.8) -- node[below] {$l_y$} (0,-2.8);
+  \node[font=\small\bfseries] at (0,3.65) {Frente de MARTHA};
+  \node[font=\footnotesize] at (0,-3.65) {Vista superior; esquema geométrico no dibujado a escala.};
+\end{tikzpicture}
