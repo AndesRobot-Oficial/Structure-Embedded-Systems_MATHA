@@ -2,10 +2,10 @@
 <title id="title">MARTHA — Estructura y sistemas embebidos</title><desc id="desc">Portada técnica con una ilustración conceptual de la base mecanum. Control, potencia e integración ROS 2.</desc>
 <defs><pattern id="grid" width="32" height="32" patternUnits="userSpaceOnUse"><path d="M32 0H0V32" fill="none" stroke="#183047" stroke-width=".7"/></pattern></defs>
 <rect width="1200" height="360" rx="20" fill="#091522"/><rect x="760" width="440" height="360" fill="url(#grid)"/>
-<rect x="48" y="45" width="38" height="4" rx="2" fill="#42d6b0"/><text x="100" y="52" fill="#94afc2" font-family="DejaVu Sans,sans-serif" font-size="13" letter-spacing="2">PLATAFORMA ROBÓTICA MÓVIL</text>
+<rect x="48" y="45" width="38" height="4" rx="2" fill="#42d6b0"/><text x="100" y="52" fill="#94afc2" font-family="DejaVu Sans,sans-serif" font-size="13" letter-spacing="2">DESARROLLO PARA ROBOCUP</text>
 <text x="45" y="151" fill="#f1f7fc" font-family="DejaVu Sans,sans-serif" font-size="80" font-weight="bold" letter-spacing="5">MARTHA</text>
 <text x="49" y="195" fill="#d0deeb" font-family="DejaVu Sans,sans-serif" font-size="25">Estructura y sistemas embebidos</text>
-<text x="50" y="231" fill="#94afc2" font-family="DejaVu Sans,sans-serif" font-size="16">Del circuito al movimiento.</text>
+<text x="50" y="231" fill="#94afc2" font-family="DejaVu Sans,sans-serif" font-size="16">Estructura, potencia y control para competir.</text>
 <g font-family="DejaVu Sans,sans-serif" font-size="13" fill="#bce9e3"><rect x="49" y="275" width="128" height="33" rx="16" fill="#133630"/><text x="70" y="297">MECANUM</text><rect x="187" y="275" width="100" height="33" rx="16" fill="#142d43"/><text x="211" y="297">ESP32</text><rect x="297" y="275" width="154" height="33" rx="16" fill="#142d43"/><text x="316" y="297">ROS 2 HUMBLE</text></g>
 <g stroke="#59ceb7" fill="none" stroke-width="2"><path d="M850 112L990 77L1100 139L958 180Z"/><path d="M850 112V218L958 281L1100 240V139M958 180V281"/><path d="M870 161L971 134L1075 193L974 222Z" stroke="#52708a"/><circle cx="976" cy="161" r="20"/><circle cx="976" cy="161" r="7" fill="#59ceb7"/><path d="M976 140V120M960 149L943 139M993 150L1011 143"/></g>
 <g fill="#122b3c" stroke="#7d9eb4" stroke-width="2"><rect x="826" y="194" width="26" height="56" rx="10" transform="rotate(-29 839 222)"/><rect x="927" y="257" width="26" height="56" rx="10" transform="rotate(-29 940 285)"/><rect x="1084" y="211" width="26" height="56" rx="10" transform="rotate(27 1097 239)"/></g>

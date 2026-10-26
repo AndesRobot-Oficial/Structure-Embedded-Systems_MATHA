@@ -1,19 +1,18 @@
-# Guardar y subir a GitHub
+# Subir los cambios a GitHub
 
-Los archivos están preparados localmente. No se hizo commit ni push durante la organización.
-
-Desde la carpeta de este repositorio:
+Desde la carpeta del repositorio:
 
 ```bash
 git status
-git switch -c documentacion-martha
-git add README.md .gitignore sim.sh robot.sh docker docs firmware ros2_ws
+git add -A
 git diff --cached --stat
 git diff --cached --check
-git commit -m "Organiza hardware y documentación de MARTHA"
-git push -u origin documentacion-martha
+git commit -m "Enfoca MARTHA en RoboCup e incorpora PCB y video"
+git push -u origin HEAD
 ```
 
-Si la rama ya existe, usar `git switch documentacion-martha`. Revisar los archivos preparados antes del commit. Tras el push se puede abrir un Pull Request para incorporar la rama.
+Revisar el listado antes de confirmar. `git add -A` también registra las eliminaciones y reorganizaciones.
 
-Los videos se enlazan desde la publicación existente de `martha_nav`; los MP4 no se duplicaron en Git. El inventario conserva registros pendientes. El firmware es la revisión que funciona en el robot (c8faa84).
+El archivo `docs/evidencias/videos/martha_demostracion.mp4` está permitido expresamente en `.gitignore`: pesa unos 11 MB y se incluye junto con las fotos. El README enlaza el archivo local, por lo que el enlace funcionará al subir esta misma estructura. El resto de archivos MP4 sigue excluido para evitar incorporaciones accidentales.
+
+La organización local no ejecuta commit ni push. La visualización del video depende del visor de GitHub; el enlace permite abrir o descargar el archivo.
