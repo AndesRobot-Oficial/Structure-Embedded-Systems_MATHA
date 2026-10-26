@@ -1,26 +1,23 @@
-# Estado y diferencias entre fuentes
+# Estado del desarrollo para RoboCup
 
-Organización: 25 de octubre de 2026. Se cotejó el firmware con el anexo de hardware de la tesis activa y con los PNG aportados.
+## Material disponible
 
-**Firmware resuelto (25/10/2026):** la carpeta [firmware](../firmware/README.md) ahora tiene la revisión que funciona en el robot (`c8faa84` de `martha_nav`, la que cita el anexo de la tesis). La copia anterior (`e7993a9`) era más vieja:
+- Siete diagramas eléctricos de potencia, motores y sensores.
+- Proyecto KiCad, esquemático, PCB, librerías y ZIP de Gerbers.
+- Firmware ESP32 e interfaces ROS como base de integración.
+- Inventario de componentes, conexiones, cuatro fotos y un video de MARTHA.
 
-| Tema | Copia anterior (e7993a9) | Firmware actual (c8faa84) |
-|---|---|---|
-| Kp | 2,0 | 1,0, sobre un feedforward |
-| Signos motores | +1,+1,+1,+1 | +1,-1,+1,-1 |
-| Signos encoders | +1,+1,+1,+1 | -1,+1,-1,+1 |
-| Límite lineal / angular | 0,5 m/s / 1,2 rad/s | 1,0 m/s / 2,0 rad/s |
-| Batería y sobrecorriente | Comprobaciones habilitadas | Circuitos sin soldar y comprobaciones apagadas (`false`) desde el 21/10/2026 |
+## Próximas tareas
 
-Además, el diagrama `07_realsense_imu.png` representa dos RealSense, mientras el presupuesto de tesis indica que RealSense no estaba asignada al proyecto. Se conservó la variante sin incorporarla como equipamiento experimental confirmado.
+- [ ] Definir con el equipo la categoría, edición y requisitos de RoboCup que guiarán la integración.
+- [ ] Revisar el diseño de PCB, completar resistencias sin valor y ejecutar ERC/DRC.
+- [ ] Generar Gerbers desde la revisión aprobada; comprobar el ZIP aportado antes de reutilizarlo.
+- [ ] Conciliar la etiqueta de potencia `+12V` de KiCad con la batería indicada como 15 V en los diagramas.
+- [ ] Verificar GPIO23, adaptación de niveles de encoders y rango de medición de batería.
+- [ ] Registrar qué circuitos están montados y qué protecciones se han comprobado.
+- [ ] Confirmar firmware cargado, signos de ruedas, límites, ganancias PI y calibración de sensores.
+- [ ] Completar capacidad de batería, consumos, autonomía, conectores y calibres.
+- [ ] Confirmar modelos y montaje de las dos RealSense representadas en el diagrama.
+- [ ] Incorporar el diseño mecánico editable cuando esté disponible.
 
-## Pendientes
-
-- [x] Recuperar el firmware cargado en las pruebas: `c8faa84` (signos, ganancias y límites resueltos).
-- [ ] Soldar el divisor de batería y el comparador de sobrecorriente, y activar sus comprobaciones.
-- [ ] Confirmar montaje de cámaras y alimentación del módulo IMU.
-- [ ] Recuperar CAD y PCB/Gerbers originales.
-- [ ] Completar consumos, batería, conectores y cableado mediante datos o mediciones.
-- [ ] Confirmar licencia de distribución del código y diseños antes de asignar una licencia al conjunto.
-
-Se incluyeron diagramas, BOM, conexiones, firmware, interfaces ROS, fuentes gráficas y evidencias. El URDF se agregó después en `ros2_ws/src/andesrobot_description`. No se copiaron modelos de entrenamiento, temporales, currículos ni versiones anteriores de la tesis.
+La documentación describe el estado disponible del proyecto. La preparación para la competencia requiere comprobar la plataforma y los requisitos de la categoría elegida.
