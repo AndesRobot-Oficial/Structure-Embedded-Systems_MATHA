@@ -7,7 +7,7 @@
 | PWM IN1 | 27 | 32 | 15 | 18 |
 | PWM IN2 | 14 | 33 | 2 | 19 |
 
-GPIO17 controla nSLEEP de los cuatro drivers. GPIO25/26 son SDA/SCL de la MPU6050. GPIO23 y GPIO34 corresponden a sobrecorriente y medición de batería previstas; no están soldados y el firmware tiene sus comprobaciones apagadas (`BATTERY_SENSE` y `OVERCURRENT_SENSE` en `false`).
+GPIO17 controla nSLEEP de los cuatro drivers. GPIO25/26 son SDA/SCL de la MPU6050. GPIO23 y GPIO34 corresponden a supervisión de corriente y medición de batería. El proyecto de PCB incluye esos circuitos, pero en la placa de Martha todavía no están soldados y el firmware tiene sus comprobaciones apagadas (`BATTERY_SENSE` y `OVERCURRENT_SENSE` en `false`).
 
 [Tabla de conexiones](tabla_conexiones.csv): conexiones lógicas extraídas de diagramas y firmware, no un conteo de conductores físicos. Calibres y longitudes se dejan vacíos porque no están verificados. Los colores de terminales de motor y encoder se transcriben del diagrama, no de una inspección del arnés.
 

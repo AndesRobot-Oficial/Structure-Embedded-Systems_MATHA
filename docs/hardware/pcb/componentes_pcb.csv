@@ -1,0 +1,36 @@
+referencia,valor_en_pcb,huella
+R6,10k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+SW1,SW_SPST,Connector_Wire:SolderWire-0.75sqmm_1x02_P4.8mm_D1.25mm_OD2.3mm
+J1,Conn_01x06,My_Components:PinHeader_1x06_P2.54mm_Horizontal_Mirrored
+HEX M4,MountingHole_4.3mm_M4,MountingHole:MountingHole_4.3mm_M4
+R10,R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+J5,Battery,My_Components:DEANS
+J4,Conn_01x06,My_Components:PinHeader_1x06_P2.54mm_Horizontal_Mirrored
+R5,39k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+HEX M4,MountingHole_4.3mm_M4,MountingHole:MountingHole_4.3mm_M4
+HEX M4,MountingHole_4.3mm_M4,MountingHole:MountingHole_4.3mm_M4
+U1,~,Pololu_Driver:MPQ6612A
+Q1,IRF4905,Package_TO_SOT_THT:TO-220-3_Vertical
+U0,~,ESP32_dev_module:ESP32_DevKit_30Pin
+J6,IMU,Connector_PinHeader_2.54mm:PinHeader_1x08_P2.54mm_Vertical
+R2,R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+R4,100k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+D4,LED,LED_THT:LED_D5.0mm
+R8,R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+D2,LED,LED_THT:LED_D5.0mm
+R7,R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+D3,LED,LED_THT:LED_D5.0mm
+U4,~,Pololu_Driver:MPQ6612A
+C1,10nf,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm
+R9,R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+R1,47k,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+D1,LED,LED_THT:LED_D5.0mm
+U3,~,Pololu_Driver:MPQ6612A
+RV1,ViSEN Reference,Potentiometer_THT:Potentiometer_Bourns_3296W_Vertical
+U2,~,Pololu_Driver:MPQ6612A
+U5,LM339,Package_DIP:DIP-14_W7.62mm
+J2,Conn_01x06,My_Components:PinHeader_1x06_P2.54mm_Horizontal_Mirrored
+J3,Conn_01x06,My_Components:PinHeader_1x06_P2.54mm_Horizontal_Mirrored
+C2,10nf,Capacitor_THT:C_Disc_D5.0mm_W2.5mm_P2.50mm
+R3,R,Resistor_THT:R_Axial_DIN0207_L6.3mm_D2.5mm_P7.62mm_Horizontal
+HEX M4,MountingHole_4.3mm_M4,MountingHole:MountingHole_4.3mm_M4

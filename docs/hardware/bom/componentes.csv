@@ -1,6 +1,6 @@
 grupo,componente,cantidad,estado,nota
 Control,ESP32 DevKit/WROOM,1,Documentado,Modelo exacto de placa por confirmar
-Tracción,Pololu 4753 12 V 50:1 con encoder,4,Documentado,Cuatro instalados; dos reposiciones no son motores adicionales
+Tracción,Pololu 4753 12 V 50:1 con encoder,4,Documentado,Una unidad por rueda
 Tracción,Pololu 5285 MPQ6612A,4,Documentado,Un driver por motor
 Tracción,Rueda mecanum diámetro 150 mm,4,Documentado,
 Sensores,RPLIDAR A2M8,1,Documentado,
@@ -8,6 +8,6 @@ Sensores,MPU6050,1,Documentado,Confirmar módulo
 Cómputo,PC a bordo,1,Documentado,Modelo pendiente
 Energía,Batería de plataforma documentada como 15 V,1,Documentado,Capacidad química y rango pendientes
 Mecánica,Plataforma de aluminio,1,Documentado,Despiece y tornillería pendientes
-Electrónica,PCB de control,1,Fabricación documentada,Gerbers y diseño no disponibles en esta entrega
-Conexión,Cableado conectores y consumibles,1,Lote documentado,Desglosar
-Sensores adicionales,RealSense,2,Solo diagrama adicional,No afirmar uso en pruebas de tesis
+Electrónica,PCB de control,1,Diseño disponible,Proyecto KiCad y Gerbers incluidos; correspondencia por verificar
+Conexión,Cableado conectores y consumibles,1,Por desglosar,Desglosar
+Sensores adicionales,RealSense,2,Solo diagrama adicional,Confirmar modelos y montaje
