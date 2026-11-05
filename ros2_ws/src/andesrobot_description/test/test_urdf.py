@@ -7,6 +7,7 @@ import itertools
 import xml.etree.ElementTree as ET
 from pathlib import Path
 
+import numpy as np
 import pytest
 import xacro
 
@@ -53,3 +54,46 @@ def test_topics_del_contrato_en_simulacion():
 
 def test_sin_plugins_fuera_de_simulacion():
     assert '<plugin' not in expand(drive='planar', sim=False)
+
+
+def _transformada(origin):
+    """Matriz 4x4 de un <origin xyz rpy> (identidad si no hay)."""
+    m = np.eye(4)
+    if origin is None:
+        return m
+    r, p, y = (float(v) for v in (origin.get('rpy') or '0 0 0').split())
+    rx = np.array([[1, 0, 0], [0, np.cos(r), -np.sin(r)], [0, np.sin(r), np.cos(r)]])
+    ry = np.array([[np.cos(p), 0, np.sin(p)], [0, 1, 0], [-np.sin(p), 0, np.cos(p)]])
+    rz = np.array([[np.cos(y), -np.sin(y), 0], [np.sin(y), np.cos(y), 0], [0, 0, 1]])
+    m[:3, :3] = rz @ ry @ rx
+    m[:3, 3] = [float(v) for v in (origin.get('xyz') or '0 0 0').split()]
+    return m
+
+
+@pytest.mark.parametrize('drive', ['planar', 'mecanum'])
+def test_masa_y_centro_de_masa_medidos(drive):
+    # Martha real pesada el 2026-11-04 (11.87 kg con la torre); el centro de masa en x, y salió
+    # de pesar bajo cada rueda. Si cambias una masa del modelo, reajusta base_link.
+    robot = ET.fromstring(expand(drive=drive, tower=True))
+    padres = {j.find('child').get('link'): (j.find('parent').get('link'),
+                                            _transformada(j.find('origin')))
+              for j in robot.findall('joint')}
+
+    def pose(link):
+        if link not in padres:
+            return np.eye(4)
+        padre, t = padres[link]
+        return pose(padre) @ t
+
+    masa, momento = 0.0, np.zeros(3)
+    for link in robot.findall('link'):
+        inercial = link.find('inertial')
+        if inercial is None:
+            continue
+        m = float(inercial.find('mass').get('value'))
+        masa += m
+        momento += m * (pose(link.get('name')) @ _transformada(inercial.find('origin')))[:3, 3]
+    x, y, _ = momento / masa
+    assert masa == pytest.approx(11.87, abs=0.01)
+    assert x == pytest.approx(-0.10, abs=0.005)
+    assert y == pytest.approx(0.0, abs=0.005)

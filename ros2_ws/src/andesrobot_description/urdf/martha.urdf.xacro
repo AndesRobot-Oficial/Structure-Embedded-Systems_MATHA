@@ -30,7 +30,7 @@
            planar   ruedas fijas + gazebo_ros_planar_move. Gazebo mueve el cuerpo directo con
                     /cmd_vel (vx, vy, w), sin dinámica de ruedas. Rápido y estable, sirve para
                     navegación. Es el modo por defecto.
-           mecanum  las 4 ruedas con sus 12 rodillos y ros2_control (mecanum_drive_controller).
+           mecanum  las 4 ruedas con sus 15 rodillos y ros2_control (mecanum_drive_controller).
                     Más realista y más lento. Le falta el puente /cmd_vel -> controlador ->
                     /base/odom, que es trabajo de Estructura.
          tower      true = la Martha real, con sus dos tablas y la torre de perfiles de aluminio.
@@ -58,7 +58,12 @@
     <xacro:property name="base_center_y" value="0.410" />
     <xacro:property name="base_z" value="0.025" />
     <xacro:property name="height_0" value="0.125" />
-    <!-- Ruedas. Radio 0.075 m; la mecanum es un cubo más 12 rodillos que llegan a 0.079 m del eje. -->
+    <!-- Ruedas. Radio 0.075 m; la mecanum es un cubo más 15 rodillos que llegan a 0.079 m del eje.
+         Cada rueda pesa 0.613 kg (pesada 2026-11-04); en drive=mecanum el cubo lleva lo que no
+         pesan los rodillos. -->
+    <xacro:property name="wheel_mass" value="0.613" />
+    <xacro:property name="roller_count" value="15" />
+    <xacro:property name="roller_mass" value="0.03" />
     <xacro:property name="wheel_length" value="0.045" />
     <xacro:property name="wheel_radius" value="0.075" />
     <xacro:property name="hub_radius" value="0.045" />
@@ -171,12 +176,19 @@
                 <box size="${contact_shell_x} ${contact_shell_y} ${contact_shell_height}"/>
             </geometry>
         </collision>
-        <!-- 20 kg repartidos como una caja del tamaño de la caja de contacto. -->
+        <!-- Masa repartida como una caja del tamaño de la caja de contacto. En la Martha real,
+             base_link lleva lo que no tiene link propio (tablas, marco de las ruedas, motores,
+             batería de 0.423 kg, electrónica), o sea los 11.87 kg medidos (2026-11-04, con la torre)
+             menos los demás links (6.422 kg). Su centro de masa deja el del robot en x = -0.10 m,
+             y = 0, lo que dio pesar bajo cada rueda (con 13 % de error en la suma). La altura
+             (0.10 m) es estimada, falta medirla. El modelo original (tower=false) sigue con 20 kg. -->
+        <xacro:property name="base_mass" value="${5.448 if built else 20}" />
         <inertial>
-            <mass value="20"/>
-            <inertia ixx="${20 * (contact_shell_y**2 + contact_shell_height**2) / 12}"
-                     iyy="${20 * (contact_shell_x**2 + contact_shell_height**2) / 12}"
-                     izz="${20 * (contact_shell_x**2 + contact_shell_y**2) / 12}"
+            <origin xyz="${'-0.169 0 0.10' if built else '0 0 0'}"/>
+            <mass value="${base_mass}"/>
+            <inertia ixx="${base_mass * (contact_shell_y**2 + contact_shell_height**2) / 12}"
+                     iyy="${base_mass * (contact_shell_x**2 + contact_shell_height**2) / 12}"
+                     izz="${base_mass * (contact_shell_x**2 + contact_shell_y**2) / 12}"
                      ixy="0" ixz="0" iyz="0"/>
         </inertial>
     </link>
@@ -260,6 +272,28 @@
         <xacro:profile_bar name="tower_crossbar_front_high" x="${post_x_front}" y="0" z="${upper_board_top + crossbar_high_front + crossbar_sz/2}" sx="${profile}" sy="${inner_y}" sz="${crossbar_sz}" />
         <xacro:profile_bar name="tower_crossbar_rear_low" x="${post_x_rear}" y="0" z="${upper_board_top + crossbar_low + crossbar_sz/2}" sx="${profile}" sy="${inner_y}" sz="${crossbar_sz}" />
         <xacro:profile_bar name="tower_crossbar_rear_high" x="${post_x_rear}" y="0" z="${upper_board_top + crossbar_high_rear + crossbar_sz/2}" sx="${profile}" sy="${inner_y}" sz="${crossbar_sz}" />
+
+        <!-- Marco entre las dos tablas, bajo los postes de la torre (y = +-post_y), de perfil de
+             20 x 20 mm. Por lado, un largo sobre la tabla de abajo y otro bajo la de arriba, a todo
+             el largo de las tablas, unidos por dos verticales en los extremos del tramo ancho del
+             chasis (x = +-board_center_x/2). Adelante y atrás, sobre la tabla de abajo, un perfil
+             doble de 20 x 40 mm (acostado, el lado largo en x) cierra el rectángulo entre los dos
+             largos. Queda debajo del plano del scan, así que el lidar no lo ve. Posiciones sacadas
+             de fotos y de un dibujo del equipo, sin medir con cinta. -->
+        <xacro:property name="frame_low_z" value="${lower_board_top + profile/2}" />
+        <xacro:property name="frame_high_z" value="${upper_board_top - board_z - profile/2}" />
+        <xacro:property name="frame_post_sz" value="${frame_high_z - frame_low_z - profile}" />
+        <xacro:property name="frame_cross_x" value="${upper_board_x/2 - post_sx/2}" />
+        <xacro:profile_bar name="frame_rail_low_left" x="0" y="${post_y}" z="${frame_low_z}" sx="${upper_board_x}" sy="${profile}" sz="${profile}" />
+        <xacro:profile_bar name="frame_rail_low_right" x="0" y="${-post_y}" z="${frame_low_z}" sx="${upper_board_x}" sy="${profile}" sz="${profile}" />
+        <xacro:profile_bar name="frame_rail_high_left" x="0" y="${post_y}" z="${frame_high_z}" sx="${upper_board_x}" sy="${profile}" sz="${profile}" />
+        <xacro:profile_bar name="frame_rail_high_right" x="0" y="${-post_y}" z="${frame_high_z}" sx="${upper_board_x}" sy="${profile}" sz="${profile}" />
+        <xacro:profile_bar name="frame_post_front_left" x="${board_center_x/2}" y="${post_y}" z="${(frame_low_z + frame_high_z)/2}" sx="${profile}" sy="${profile}" sz="${frame_post_sz}" />
+        <xacro:profile_bar name="frame_post_front_right" x="${board_center_x/2}" y="${-post_y}" z="${(frame_low_z + frame_high_z)/2}" sx="${profile}" sy="${profile}" sz="${frame_post_sz}" />
+        <xacro:profile_bar name="frame_post_rear_left" x="${-board_center_x/2}" y="${post_y}" z="${(frame_low_z + frame_high_z)/2}" sx="${profile}" sy="${profile}" sz="${frame_post_sz}" />
+        <xacro:profile_bar name="frame_post_rear_right" x="${-board_center_x/2}" y="${-post_y}" z="${(frame_low_z + frame_high_z)/2}" sx="${profile}" sy="${profile}" sz="${frame_post_sz}" />
+        <xacro:profile_bar name="frame_cross_front" x="${frame_cross_x}" y="0" z="${frame_low_z}" sx="${post_sx}" sy="${inner_y}" sz="${profile}" />
+        <xacro:profile_bar name="frame_cross_rear" x="${-frame_cross_x}" y="0" z="${frame_low_z}" sx="${post_sx}" sy="${inner_y}" sz="${profile}" />
     </xacro:if>
 
     <!-- ======================= Ruedas ======================= -->
@@ -276,7 +310,7 @@
                 <geometry><cylinder length="${wheel_length}" radius="${wheel_radius}" /></geometry>
             </collision>
             <inertial>
-                <mass value="0.5"/>
+                <mass value="${wheel_mass}"/>
                 <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
             </inertial>
         </link>
@@ -303,7 +337,7 @@
                 <geometry><cylinder length="${roller_length}" radius="${roller_radius}" /></geometry>
             </collision>
             <inertial>
-                <mass value="0.03"/>
+                <mass value="${roller_mass}"/>
                 <inertia ixx="0.00002" ixy="0.0" ixz="0.0" iyy="0.00002" iyz="0.0" izz="0.00001"/>
             </inertial>
         </link>
@@ -325,7 +359,17 @@
         </gazebo>
     </xacro:macro>
 
-    <!-- Rueda mecanum (drive=mecanum). Un cubo con 12 rodillos a 45 grados, uno cada 30 grados. -->
+    <!-- Los roller_count rodillos de una rueda, repartidos parejo alrededor del eje (se llama a sí
+         misma con i + 1 hasta llegar a roller_count). -->
+    <xacro:macro name="mecanum_rollers" params="wheel_name pitch i">
+        <xacro:if value="${roller_count > i}">
+            <xacro:property name="angle" value="${2 * pi * i / roller_count}" />
+            <xacro:mecanum_roller wheel_name="${wheel_name}" index="${i}" x="${roller_mount_radius * cos(angle)}" y="${roller_mount_radius * sin(angle)}" yaw="${angle + pi/2}" pitch="${pitch}" />
+            <xacro:mecanum_rollers wheel_name="${wheel_name}" pitch="${pitch}" i="${i + 1}" />
+        </xacro:if>
+    </xacro:macro>
+
+    <!-- Rueda mecanum (drive=mecanum). Un cubo con roller_count rodillos a 45 grados. -->
     <xacro:macro name="mecanum_wheel" params="name x y pitch">
         <link name="${name}_wheel">
             <visual>
@@ -336,7 +380,7 @@
                 <geometry><cylinder length="${wheel_length}" radius="${hub_radius}" /></geometry>
             </collision>
             <inertial>
-                <mass value="0.5"/>
+                <mass value="${wheel_mass - roller_count * roller_mass}"/>
                 <inertia ixx="0.01" ixy="0.0" ixz="0.0" iyy="0.01" iyz="0.0" izz="0.01"/>
             </inertial>
         </link>
@@ -346,18 +390,7 @@
             <origin xyz="${x} ${y} ${wheel_pos_z}" rpy="1.57 0 0" />
             <axis xyz="0 0 -1" />
         </joint>
-        <xacro:mecanum_roller wheel_name="${name}" index="00" x="${roller_mount_radius}" y="0" yaw="1.570796" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="01" x="${roller_mount_radius * 0.866025}" y="${roller_mount_radius * 0.5}" yaw="2.094395" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="02" x="${roller_mount_radius * 0.5}" y="${roller_mount_radius * 0.866025}" yaw="2.617994" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="03" x="0" y="${roller_mount_radius}" yaw="3.141593" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="04" x="${-roller_mount_radius * 0.5}" y="${roller_mount_radius * 0.866025}" yaw="-2.617994" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="05" x="${-roller_mount_radius * 0.866025}" y="${roller_mount_radius * 0.5}" yaw="-2.094395" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="06" x="${-roller_mount_radius}" y="0" yaw="-1.570796" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="07" x="${-roller_mount_radius * 0.866025}" y="${-roller_mount_radius * 0.5}" yaw="-1.047198" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="08" x="${-roller_mount_radius * 0.5}" y="${-roller_mount_radius * 0.866025}" yaw="-0.523599" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="09" x="0" y="${-roller_mount_radius}" yaw="0" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="10" x="${roller_mount_radius * 0.5}" y="${-roller_mount_radius * 0.866025}" yaw="0.523599" pitch="${pitch}" />
-        <xacro:mecanum_roller wheel_name="${name}" index="11" x="${roller_mount_radius * 0.866025}" y="${-roller_mount_radius * 0.5}" yaw="1.047198" pitch="${pitch}" />
+        <xacro:mecanum_rollers wheel_name="${name}" pitch="${pitch}" i="0" />
     </xacro:macro>
 
     <xacro:if value="${'$(arg drive)' == 'mecanum'}">
