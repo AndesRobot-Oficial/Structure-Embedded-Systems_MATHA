@@ -21,7 +21,7 @@ Convención REP-103/105: +X adelante, +Y izquierda, +Z arriba. Archivos: `urdf/m
 
 ## Base
 
-- Ruedas mecanum de radio 0.075 m y ancho 0.045 m, con 12 rodillos a 45° cada una
+- Ruedas mecanum de radio 0.075 m y ancho 0.045 m, con 15 rodillos a 45° cada una
   (`drive:=mecanum`). `lx + ly` = 0.385 m, igual que en el firmware.
 - Caja de contacto 0.58 × 0.41 m (la usan la navegación y el filtro de la torre).
 
@@ -29,10 +29,18 @@ Convención REP-103/105: +X adelante, +Y izquierda, +Z arriba. Archivos: `urdf/m
 
 - Dos tablas de 5 mm: la de abajo con la forma del chasis (tope a 0.095 m) y la de arriba de
   0.57 × 0.405 m (tope a 0.20 m). El LiDAR va sobre la de arriba.
+- Marco entre las tablas, de perfil de 20 × 20 mm bajo los postes de la torre (y = ±0.11 m): por
+  lado, un largo sobre la tabla de abajo y otro bajo la de arriba, unidos por dos verticales en
+  x = ±0.125 m. Adelante y atrás lo cierra un perfil doble de 20 × 40 mm sobre la tabla de abajo.
+  Queda bajo el plano del LiDAR. Posiciones sacadas de fotos, sin medir con cinta.
 - Torre de perfiles de aluminio: 4 postes de 20 × 40 mm (el lado largo en x) y 0.91 m de alto, en
   x = −0.033 m (adelante) y −0.208 m (atrás), y = ±0.11 m, con un travesaño bajo y uno alto por
   par. Los postes cruzan el plano del LiDAR: se ven en el scan (Navegación los borra con su
   filtro de la torre). Las masas y la sección de los travesaños son estimadas.
+- Masa total 11.87 kg (pesada el 2026-11-04 con la torre; cada rueda 0.613 kg, batería 0.423 kg).
+  `base_link` lleva lo que no tiene link propio (5.448 kg), con su centro de masa puesto para que el
+  del robot quede en x = −0.10 m, y = 0, según el peso bajo cada rueda. La altura del centro de
+  masa (0.21 m en el modelo) es estimada. `test_masa_y_centro_de_masa_medidos` lo vigila.
 - `tower:=false` es el modelo original de la tesis, sin tablas ni torre y con el LiDAR a 0.2325 m.
 
 ## Argumentos del xacro
